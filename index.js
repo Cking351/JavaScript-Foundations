@@ -41,15 +41,15 @@ let monthlyRate = Math.floor(rate * 100) / 100;
 
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
-function mortgageCalculator(){
-    let numerator = Math.pow(1 + monthlyInterestRate, periods) * monthlyInterestRate;
-    let denominator = Math.pow(monthlyInterestRate + 1, periods) -1;
-    let rate = principal * numerator / denominator;
-    let monthlyRate = Math.floor(rate * 100) / 100;
-    let userString = `${name}` + ", your monthly rate is " + `${monthlyRate}`
-    console.log(userString);
-    return mortgageCalculator;
-}
+// function mortgageCalculator(){
+//     let numerator = Math.pow(1 + monthlyInterestRate, periods) * monthlyInterestRate;
+//     let denominator = Math.pow(monthlyInterestRate + 1, periods) -1;
+//     let rate = principal * numerator / denominator;
+//     let monthlyRate = Math.floor(rate * 100) / 100;
+//     let userString = `${name}` + ", your monthly rate is " + `${monthlyRate}`
+//     console.log(userString);
+//     return mortgageCalculator;
+// }
 // 🏡 Task 4: Arguments and Parameters
 /* Substitute the variables in your functions for parameters such that you can substitute `P`, `I`, and `N` when you call the function.
 
@@ -57,16 +57,12 @@ For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
 function mortgageCalculator(P,I,N){
-    let principal = P;
-    let monthlyInterestRate = I;
-    let periods = N;
     let numerator = Math.pow(1 + monthlyInterestRate, periods) * monthlyInterestRate;
     let denominator = Math.pow(monthlyInterestRate + 1, periods) -1;
     let rate = principal * numerator / denominator;
     let monthlyRate = Math.floor(rate * 100) / 100;
     let userString = `${name}` + ", your monthly rate is " + `${monthlyRate}`
     console.log(userString);
-    return mortgageCalculator;
 }
 console.log(mortgageCalculator(200000, 0.05, 30));
 
