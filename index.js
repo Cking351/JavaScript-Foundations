@@ -28,10 +28,10 @@ Hint #2: you'll need to use the `math` object for parts of this calculation!
 
 When your math is correct, monthlyRate will equal 1073.64
 */
-let numerator = Math.pow(1 + monthlyInterestRate, periods) * monthlyInterestRate;
-let denominator = Math.pow(monthlyInterestRate + 1, periods) -1;
-let rate = principal * numerator / denominator;
-let monthlyRate = Math.floor(rate * 100) / 100;
+// let numerator = Math.pow(1 + monthlyInterestRate, periods) * monthlyInterestRate;
+// let denominator = Math.pow(monthlyInterestRate + 1, periods) -1;
+// let rate = principal * numerator / denominator;
+// let monthlyRate = Math.floor(rate * 100) / 100;
 
 
 
@@ -56,23 +56,49 @@ If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly 
 For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
-function mortgageCalculator(P,I,N){
-    let numerator = Math.pow(1 + monthlyInterestRate, periods) * monthlyInterestRate;
-    let denominator = Math.pow(monthlyInterestRate + 1, periods) -1;
-    let rate = principal * numerator / denominator;
-    let monthlyRate = Math.floor(rate * 100) / 100;
-    let userString = `${name}` + ", your monthly rate is " + `${monthlyRate}`
-    console.log(userString);
-}
-console.log(mortgageCalculator(200000, 0.05, 30));
+// function mortgageCalculator2(P,I,N){
+//     let principal = P;
+//     let monthlyInterestRate = I / 12;
+//     let periods = N * 12;
+//     let numerator = Math.pow(1 + monthlyInterestRate, periods) * monthlyInterestRate;
+//     let denominator = Math.pow(monthlyInterestRate + 1, periods) -1;
+//     let rate = principal * numerator / denominator;
+//     let monthlyRate = Math.floor(rate * 100) / 100;
+//     let userString = `${name}` + ", your monthly rate is " + `${monthlyRate}`
+//     console.log(userString);
+//     return mortgageCalculator2;
+// }
+// console.log(mortgageCalculator2(200000, 0.05, 30));
 
 
 // 🏡 Task 5: Conditionals
 /* Add another paramter to your function called credit score. This parameter will be a number between 0 and 800 (a credit score).
 
-Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5% and if credit score is anywhere between 660 and 740 interest rate doesn't change.
+Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5%
+ and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
-
+function mortgageCalculator2(P,I,N,C){
+    let creditScore = C;
+    let principal = P;
+    let monthlyInterestRate = I / 12;
+    let possibleCredit = monthlyInterestRate;
+    let periods = N * 12;
+    let numerator = Math.pow(1 + monthlyInterestRate, periods) * monthlyInterestRate;
+    let denominator = Math.pow(monthlyInterestRate + 1, periods) -1;
+    let rate = principal * numerator / denominator;
+    let monthlyRate = Math.floor(rate * 100) / 100;
+    if(creditScore > 740){
+        let monthlyInterestRate = possibleCredit - 0.5;
+    }else if(creditScore < 660){
+        let monthlyInterestRate = possibleCredit + 0.5;
+    }else{
+        let monthlyInterestRate = possibleCredit;
+    }
+    let userString = `${name}` + ", your monthly rate is " + `${monthlyRate}`
+    console.log(userString);
+    return mortgageCalculator2;
+}
+console.log(mortgageCalculator2(200000, 0.05, 30, 800));
 
 
 
