@@ -74,31 +74,36 @@ mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 // 🏡 Task 5: Conditionals
 /* Add another paramter to your function called credit score. This parameter will be a number between 0 and 800 (a credit score).
 
+// M = P [ I ( 1 + I )^N ] / [ ( 1 + I )^N – 1 ]
+
 Then, add control flow within your function such that IF creditScore is above 740, interest rate drops by 0.5%, if credit score is below 660, interest rate increases by 0.5%
  and if credit score is anywhere between 660 and 740 interest rate doesn't change.
 */
 function mortgageCalculator2(P,I,N,C){
-    let creditScore = C;
-    let principal = P;
-    let monthlyInterestRate = I / 12;
-    let possibleCredit = monthlyInterestRate;
-    let periods = N * 12;
-    let numerator = Math.pow(1 + monthlyInterestRate, periods) * monthlyInterestRate;
-    let denominator = Math.pow(monthlyInterestRate + 1, periods) -1;
-    let rate = principal * numerator / denominator;
-    let monthlyRate = Math.floor(rate * 100) / 100;
-    if(creditScore > 740){
-        let monthlyInterestRate = possibleCredit - 0.5;
-    }else if(creditScore < 660){
-        let monthlyInterestRate = possibleCredit + 0.5;
-    }else{
-        let monthlyInterestRate = possibleCredit;
+        let principal = P;
+        let monthlyInterestRate = I / 12;
+        let periods = N * 12;
+        let creditScore = C;
+        let numerator = Math.pow(1 + monthlyInterestRate, periods) * monthlyInterestRate;
+        let denominator = Math.pow(monthlyInterestRate + 1, periods) -1;
+        let rate = principal * numerator / denominator;
+        let monthlyRate = Math.floor(rate * 100) / 100;
+        if(creditScore > 740){
+            let payment = monthlyRate -0.05;
+            console.log(`${name}` + ", your monthly rate is " + `${payment}`);
+        }else if (creditScore < 660){
+            let payment = monthlyRate + 0.05;
+            console.log(`${name}` + ", your monthly rate is " + `${payment}`);
+        }else{
+            console.log(`${name}` + ", your monthly rate is " + `${monthlyRate}`);
+        }
+
+        return mortgageCalculator2;
     }
-    let userString = `${name}` + ", your monthly rate is " + `${monthlyRate}`
-    console.log(userString);
-    return mortgageCalculator2;
-}
-console.log(mortgageCalculator2(200000, 0.05, 30, 800));
+    console.log(mortgageCalculator2(200000, 0.05, 30, 750));
+
+
+
 
 
 
